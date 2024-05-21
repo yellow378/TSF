@@ -41,7 +41,7 @@ class Model(nn.Module):
     Paper link: https://arxiv.org/abs/2207.01186
     """
 
-    def __init__(self, configs, chunk_size=24):
+    def __init__(self, configs, chunk_size=16):
         """
         chunk_size: int, reshape T into [num_chunks, chunk_size]
         """
@@ -53,7 +53,7 @@ class Model(nn.Module):
         else:
             self.pred_len = configs.pred_len
 
-        if configs.task_name == 'long_term_forecast' or configs.task_name == 'short_term_forecast':
+        if configs.task_name == 'long_term_forecast' or configs.task_name == 'nodate':
             self.chunk_size = min(configs.pred_len, configs.seq_len, chunk_size)
         else:
             self.chunk_size = min(configs.seq_len, chunk_size)
@@ -145,7 +145,7 @@ class Model(nn.Module):
         return output
 
     def forward(self, x_enc, x_mark_enc, x_dec, x_mark_dec, mask=None):
-        if self.task_name == 'long_term_forecast' or self.task_name == 'short_term_forecast':
+        if self.task_name == 'long_term_forecast' or self.task_name == 'nodate':
             dec_out = self.forecast(x_enc, x_mark_enc, x_dec, x_mark_dec)
             return dec_out[:, -self.pred_len:, :]  # [B, L, D]
         if self.task_name == 'imputation':

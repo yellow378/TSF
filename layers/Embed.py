@@ -125,7 +125,6 @@ class DataEmbedding(nn.Module):
                 x) + self.temporal_embedding(x_mark) + self.position_embedding(x)
         return self.dropout(x)
 
-
 class DataEmbedding_inverted(nn.Module):
     def __init__(self, c_in, d_model, embed_type='fixed', freq='h', dropout=0.1):
         super(DataEmbedding_inverted, self).__init__()

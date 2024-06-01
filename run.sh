@@ -1,0 +1,27 @@
+python -u run.py \
+  --task_name nodate \
+  --is_training 1 \
+  --root_path ./dataset/LongYuanPower/processed \
+  --data_path 'Turb1.csv' \
+  --model_id trub1_speed \
+  --model FEDformer \
+  --data custom_withoudate \
+  --features MS \
+  --target Wspd \
+  --e_layers 3 \
+  --d_layers 2 \
+  --factor 3 \
+  --enc_in 2 \
+  --dec_in 2 \
+  --c_out 1 \
+  --seq_len 288\
+  --label_len 144\
+  --pred_len 36\
+  --batch_size 16 \
+  --d_model 1024 \
+  --des 'Exp' \
+  --itr 1 \
+  --learning_rate 0.00001 \
+  --patience 6\
+  --num_workers 0\
+  --n_heads 8

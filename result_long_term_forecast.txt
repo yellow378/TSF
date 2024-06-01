@@ -76,3 +76,18 @@ mse:0.919448971748352, mae:0.7650326490402222, dtw:-999
 nodate_turb1_speed_LSTM_custom_withoudate_ftMS_sl288_ll144_pl288_dm512_nh12_el5_dl2_df512_expand2_dc4_fc1_ebtimeF_dtTrue_test_0  
 mse:1.0110634565353394, mae:0.8453809022903442, dtw:-999
 
+nodate_trub1_speed_FEDformer_custom_withoudate_ftMS_sl288_ll144_pl144_dm512_nh8_el5_dl4_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
+mse:1.1816728115081787, mae:0.8498633503913879, dtw:-999
+
+nodate_trub1_speed_FEDformer_custom_withoudate_ftMS_sl288_ll144_pl144_dm512_nh8_el3_dl2_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
+mse:0.9687944650650024, mae:0.7946271300315857, dtw:-999
+
+nodate_trub1_speed_FEDformer_custom_withoudate_ftMS_sl288_ll144_pl72_dm512_nh8_el3_dl2_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
+mse:0.8101745247840881, mae:0.7272224426269531, dtw:-999
+
+nodate_trub1_speed_FEDformer_custom_withoudate_ftMS_sl288_ll144_pl72_dm512_nh8_el5_dl4_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
+mse:1.0133922100067139, mae:0.7845458984375, dtw:-999
+
+nodate_trub1_speed_FEDformer_custom_withoudate_ftMS_sl288_ll144_pl36_dm512_nh8_el5_dl4_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
+mse:0.5720672607421875, mae:0.5885913372039795, dtw:-999
+

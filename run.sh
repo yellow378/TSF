@@ -3,25 +3,54 @@ python -u run.py \
   --is_training 1 \
   --root_path ./dataset/LongYuanPower/processed \
   --data_path 'Turb1.csv' \
-  --model_id trub1_speed \
-  --model FEDformer \
+  --model_id trub1_patv_11_slr \
+  --model Crossformer \
   --data custom_withoudate \
   --features MS \
-  --target Wspd \
-  --e_layers 3 \
-  --d_layers 2 \
+  --target Patv \
+  --e_layers 5 \
+  --d_layers 3 \
   --factor 3 \
-  --enc_in 2 \
-  --dec_in 2 \
+  --enc_in 11 \
+  --dec_in 11 \
   --c_out 1 \
   --seq_len 288\
   --label_len 144\
-  --pred_len 36\
-  --batch_size 16 \
-  --d_model 1024 \
+  --pred_len 72\
+  --batch_size 32 \
+  --d_model 512 \
   --des 'Exp' \
   --itr 1 \
-  --learning_rate 0.00001 \
-  --patience 6\
+  --learning_rate 0.000001 \
+  --patience 10\
   --num_workers 0\
-  --n_heads 8
+  --n_heads 8 \
+  --train_epochs 1000
+python -u run.py \
+  --task_name nodate \
+  --is_training 1 \
+  --root_path ./dataset/LongYuanPower/processed \
+  --data_path 'Turb1.csv' \
+  --model_id trub1_patv_11_mslr \
+  --model Crossformer \
+  --data custom_withoudate \
+  --features MS \
+  --target Patv \
+  --e_layers 5 \
+  --d_layers 3 \
+  --factor 3 \
+  --enc_in 11 \
+  --dec_in 11 \
+  --c_out 1 \
+  --seq_len 288\
+  --label_len 144\
+  --pred_len 72\
+  --batch_size 32 \
+  --d_model 512 \
+  --des 'Exp' \
+  --itr 1 \
+  --learning_rate 0.0000001 \
+  --patience 10\
+  --num_workers 0\
+  --n_heads 8 \
+  --train_epochs 1000

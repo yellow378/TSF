@@ -2,6 +2,7 @@ from data_provider.data_factory import data_provider
 from exp.exp_basic import Exp_Basic
 from utils.tools import EarlyStopping, adjust_learning_rate, visual
 from utils.metrics import metric
+from utils.losses import SoftDTWLoss
 import torch
 import torch.nn as nn
 from torch import optim
@@ -31,11 +32,12 @@ class Exp_Long_Term_Forecast(Exp_Basic):
         return data_set, data_loader
 
     def _select_optimizer(self):
-        model_optim = optim.Adam(self.model.parameters(), lr=self.args.learning_rate)
+        model_optim = optim.Adam(filter(lambda p:p.requires_grad,self.model.parameters()), lr=self.args.learning_rate,weight_decay=self.args.dropout)
         return model_optim
 
     def _select_criterion(self):
-        criterion = nn.MSELoss()
+        #criterion = nn.MSELoss()
+        criterion = SoftDTWLoss()
         return criterion
 
     def vali(self, vali_data, vali_loader, criterion):
@@ -84,6 +86,11 @@ class Exp_Long_Term_Forecast(Exp_Basic):
         test_data, test_loader = self._get_data(flag='test')
 
         path = os.path.join(self.args.checkpoints, setting)
+        #Load from file
+        if self.args.load:
+            print('loading model')
+            self.model.load_state_dict(torch.load(os.path.join(path, 'checkpoint.pth')),strict=False)
+        
         if not os.path.exists(path):
             os.makedirs(path)
 

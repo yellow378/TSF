@@ -2,7 +2,7 @@ import os
 import torch
 from models import Autoformer, Transformer, TimesNet, Nonstationary_Transformer, DLinear, FEDformer, \
     Informer, LightTS, Reformer, ETSformer, Pyraformer, PatchTST, MICN, Crossformer, FiLM, iTransformer, \
-    Koopa, TiDE, FreTS, TimeMixer, TSMixer, SegRNN,LSTM
+    Koopa, TiDE, FreTS, TimeMixer, TSMixer, SegRNN,LSTM,TimeFutureExtract,Crossformer2
 
 class Exp_Basic(object):
     def __init__(self, args):
@@ -30,7 +30,9 @@ class Exp_Basic(object):
             'TimeMixer': TimeMixer,
             'TSMixer': TSMixer,
             'SegRNN': SegRNN,
-            'LSTM':LSTM
+            'LSTM':LSTM,
+            'TimeFutureExtract':TimeFutureExtract,
+            'Crossformer2':Crossformer2
         }
         self.device = self._acquire_device()
         self.args.device = self.device

@@ -3,5 +3,20 @@ python run.py --task_name 'nodate' --is_training 1 --model_id sin --model Crossf
 ```
 
 ```1
-python run.py --task_name 'nodate' --is_training 1 --model_id turb1_speed --model LSTM --data custom_withoudate --root_path './dataset/LongYuanPower/processed' --data_path 'Turb1.csv' --features MS --target Wspd --seq_len 288 --label_len 144 --pred_len 288 --enc_in 2 --dec_in 2 --c_out 1 --train_epochs 1000 --patience 6 --batch_size 32 --num_workers 0 --d_model 512 --d_ff 512 --n_heads 12 --e_layers 5 --d_layers 2 --learning_rate 0.00001
+python run.py --task_name 'long_term_forecast' --is_training 1 --model_id  Trub1_wind --model PatchTST --data custom --root_path './dataset/Wind' --data_path 'Turb1.csv' --features MS --target 'Wspd' --seq_len 720 --label_len 360 --pred_len 192 --enc_in 10 --dec_in 10 --c_out 1 --train_epochs 50 --patience 10 --batch_size 128 --num_workers 0 --d_model 512 --d_ff 512 --n_heads 8 --e_layers 6 --d_layers 5 --learning_rate 0.0001 --use_multi_gpu --devices '0,1'
+```
+
+```self Crossformer
+python run.py --task_name 'long_term_forecast' --is_training 1 --model_id  Time_Future --model Crossformer --data custom --root_path './dataset/LongYuanPower/processed' --data_path 'Turb1.csv' --features MS --target 'Wspd' --seq_len 400 --label_len 0 --pred_len 400 --enc_in 10 --dec_in 10 --c_out 1 --train_epochs 10000 --patience 5 --batch_size 64 --num_workers 0 --d_model 512 --d_ff 512 --n_heads 8 --e_layers 6 --d_layers 5 --learning_rate 0.00001 --futureM 1024  --dropout 0.2  --load --use_multi_gpu  --devices '0,1'
+
+```
+
+```self FEDformer
+python run.py --task_name 'long_term_forecast' --is_training 1 --model_id  Time_Future --model FEDformer --data custom_self --root_path './dataset/LongYuanPower/processed' --data_path 'Turb1.csv' --features MS --target 'Wspd' --seq_len 400 --label_len 100 --pred_len 400 --enc_in 10 --dec_in 10 --c_out 1 --train_epochs 10000 --patience 2 --batch_size 64 --num_workers 0 --d_model 256 --d_ff 512 --n_heads 8 --e_layers 12 --d_layers 6 --learning_rate 0.00001 --futureM 1024  --dropout 0.2  --use_multi_gpu  --devices '0,1'
+
+```
+
+```self Crossformer2
+python run.py --task_name 'long_term_forecast' --is_training 1 --model_id  Time_Future --model Crossformer --data custom --root_path './dataset/LongYuanPower/processed' --data_path 'Turb1.csv' --features MS --target 'Wspd' --seq_len 400 --label_len 0 --pred_len 400 --enc_in 10 --dec_in 10 --c_out 1 --train_epochs 10000 --patience 5 --batch_size 16 --num_workers 0 --d_model 512 --d_ff 512 --n_heads 8 --e_layers 6 --d_layers 5 --learning_rate 0.0001 --futureM 1024  --dropout 0.1  --load --use_multi_gpu  --devices '0,1'
+
 ```

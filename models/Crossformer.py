@@ -77,7 +77,7 @@ class Model(nn.Module):
             self.projection = nn.Linear(
                 self.head_nf * configs.enc_in, configs.num_class)
 
-
+        #print(self.encoder.parameters())
 
     def forecast(self, x_enc, x_mark_enc, x_dec, x_mark_dec):
         # embedding

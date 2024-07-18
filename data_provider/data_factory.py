@@ -1,5 +1,5 @@
 from data_provider.data_loader import Dataset_ETT_hour, Dataset_ETT_minute, Dataset_Custom, PSMSegLoader, \
-    MSLSegLoader, SMAPSegLoader, SMDSegLoader, SWATSegLoader,Dataset_Custom_WithouDate
+    MSLSegLoader, SMAPSegLoader, SMDSegLoader, SWATSegLoader,Dataset_Custom_WithouDate,Dataset_Custom_Self
 from torch.utils.data import DataLoader
 
 data_dict = {
@@ -13,7 +13,8 @@ data_dict = {
     'MSL': MSLSegLoader,
     'SMAP': SMAPSegLoader,
     'SMD': SMDSegLoader,
-    'SWAT': SWATSegLoader
+    'SWAT': SWATSegLoader,
+    'custom_self':Dataset_Custom_Self,
 }
 
 

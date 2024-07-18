@@ -16,11 +16,12 @@
 Loss functions for PyTorch.
 """
 
+import torch
 import torch as t
 import torch.nn as nn
 import numpy as np
 import pdb
-
+from sdtw import SoftDTW
 
 def divide_no_nan(a, b):
     """
@@ -87,3 +88,15 @@ class mase_loss(nn.Module):
         masep = t.mean(t.abs(insample[:, freq:] - insample[:, :-freq]), dim=1)
         masked_masep_inv = divide_no_nan(mask, masep[:, None])
         return t.mean(t.abs(target - forecast) * masked_masep_inv)
+class SoftDTWLoss(nn.Module):
+    def __init__(self, gamma=1.0):
+        super(SoftDTWLoss, self).__init__()
+        self.gamma = gamma
+
+    def forward(self, ts1, ts2):
+        batch_size = ts1.size(0)
+        loss = 0
+        for i in range(batch_size):
+            sdtw = SoftDTW(use_cuda=True, gamma=self.gamma)
+            loss += sdtw(ts1[i].unsqueeze(0), ts2[i].unsqueeze(0))
+        return loss / batch_size
